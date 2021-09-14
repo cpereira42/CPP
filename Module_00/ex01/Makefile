@@ -6,7 +6,7 @@
 #    By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 00:08:05 by cpereira          #+#    #+#              #
-#    Updated: 2021/09/09 00:48:45 by cpereira         ###   ########.fr        #
+#    Updated: 2021/09/13 22:04:48 by cpereira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS =	main.cpp \
 OBJS =	$(patsubst %.c, $(ODIR)%.o, $(SRCS))
 
 CC = clang++
-C_FLAGS = -Wall -Werror -Wextra
+C_FLAGS = -Wall -Werror -Wextra -std=c++98
 
 
 $(NAME): $(OBJS)

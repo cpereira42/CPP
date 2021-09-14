@@ -6,7 +6,7 @@
 #    By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 00:08:05 by cpereira          #+#    #+#              #
-#    Updated: 2021/09/01 00:21:32 by cpereira         ###   ########.fr        #
+#    Updated: 2021/09/13 22:05:05 by cpereira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS =	megaphone.cpp
 OBJS =	$(patsubst %.c, $(ODIR)%.o, $(SRCS))
 
 CC = clang++
-C_FLAGS = -Wall -Werror -Wextra
+C_FLAGS = -Wall -Werror -Wextra -std=c++98
 
 
 $(NAME): $(OBJS)
