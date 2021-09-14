@@ -6,7 +6,7 @@
 /*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:46:12 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/08 23:04:05 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/09/13 19:54:41 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ class Contact
 		void	setNickname(const std::string &nickname);
 		void	setPhone(const std::string &phone);
 		void	setDarksecret(const std::string &darkest_secret);
+
+		Contact( void );
+		~Contact( void );
 
 		int			get_index(void);
 		const std::string	get_FirstName(void);

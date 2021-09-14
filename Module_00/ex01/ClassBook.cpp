@@ -6,7 +6,7 @@
 /*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 22:56:05 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/10 20:20:25 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/09/13 21:46:49 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 Book::Book(void)
 {
 	this->i = 0;
+	this->qtt = 0;
 }
 
 Book::~Book(void)
@@ -24,13 +25,13 @@ Book::~Book(void)
 
 void Book::creat(void)
 {
-	list[0].setFirstName("Cezar");
+	/*list[0].setFirstName("Cezar");
 	list[0].setLastName("Pereira");
 	list[0].setNickname("cpereira");
 	list[0].setPhone("11-9.8563-6187");
-	list[0].setDarksecret("VSCODE");
+	list[0].setDarksecret("VSCODE");*/
 
-	list[1].setFirstName("Angelica");
+	/*list[1].setFirstName("Angelica");
 	list[1].setLastName("Miranda");
 	list[1].setNickname("anolivei");
 	list[1].setPhone("11-9.6762-9421");
@@ -70,9 +71,9 @@ void Book::creat(void)
 	list[7].setLastName("PEREIRA");
 	list[7].setNickname("IPEREIRA");
 	list[7].setPhone("11-9.7777-7777");
-	list[7].setDarksecret("CANIL");
+	list[7].setDarksecret("CANIL");*/
 
-	i = 7;
+	i = 0;
 }
 
 
@@ -96,6 +97,8 @@ void	Book::add(void)
 	std::cin >> buffer;
 	list[i].setDarksecret(buffer);
 	i++;
+	if (qtt <= 7)
+		qtt++;
 	if (i == 8)
 		i = 0;
 }
@@ -133,19 +136,28 @@ void	Book::list_book (void)
 		i++;
 	}
 
-
 	num = 9;
 
-	while (num < 0 || num > 8)
+	if (this->qtt > 0)
 	{
-		std::cout << "Chose the ID or 8 to back menu > ";
+		std::cout << "Chose the ID 0 to " << this->qtt - 1 << " > ";
+		std::cin >> chose;
+		num = atoi(chose.c_str());
+		if (num >= 0 && num < (this->qtt) && this->qtt > 0)
+			list_person(num);
+	}
+
+
+	/*while ((num < 0 || num > (this->qtt)) && this->qtt > 0)
+	{
+		std::cout << "Chose the ID 0 to " << this->qtt;
 		std::cin >> chose;
 		num = atoi(chose.c_str());
 		if (chose.length() != 1)
         	num = 9;
-	}
-	if (num != 8)
-		list_person(num);
+	}*/
+
+
 	return ;
 }
 

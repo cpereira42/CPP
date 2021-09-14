@@ -6,7 +6,7 @@
 /*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:46:12 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/09 00:17:33 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/09/13 20:04:41 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Book
 {
 	public:
 		int		i;
+		int		qtt;
 		Contact list[8];
 
 		Book( void );

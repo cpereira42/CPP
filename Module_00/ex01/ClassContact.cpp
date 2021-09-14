@@ -6,13 +6,22 @@
 /*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:01:18 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/10 20:20:28 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/09/13 19:52:02 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 //*******************SETTERS*******************************//
+
+Contact::~Contact(void)
+{
+}
+
+Contact::Contact(void)
+{
+}
+
 void	Contact::setFirstName(const std::string &first_name)
 {
 	this->_first_name = first_name;

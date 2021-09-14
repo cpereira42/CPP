@@ -6,7 +6,7 @@
 /*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 00:26:18 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/10 20:32:31 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/09/13 19:55:55 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main (void)
 	command =  "";
 	while (1)
 	{
-		std::cout << "Please choose the command ADDR - SEARCH - EXIT > ";
+		std::cout << "Please choose the command ADD - SEARCH - EXIT > ";
 		std::cin >> command ;
 		if (command.compare("ADD") == 0)
 			book.add();
