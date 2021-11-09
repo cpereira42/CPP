@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:46:12 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/13 19:54:41 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/11/08 19:15:11 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string> // To use string
 #include <iomanip>
+# include <stdlib.h>
 
 class Contact
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClassBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 22:56:05 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/13 21:46:49 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/11/08 21:09:40 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,26 +81,27 @@ void	Book::add(void)
 {
 	std::string buffer;
 
-	std::cout << "Insert First Name"<< std::endl;
-	std::cin >> buffer;
+	std::cout << "Insert First Name : ";
+	std::getline(std::cin, buffer);
 	list[i].setFirstName(buffer);
-	std::cout << "Insert Last Name"<< std::endl;
-	std::cin >> buffer;
+	std::cout << "Insert Last Name : ";
+	std::getline(std::cin, buffer);
 	list[i].setLastName(buffer);
-	std::cout << "Insert NickName"<< std::endl;
-	std::cin >> buffer;
+	std::cout << "Insert NickName : ";
+	std::getline(std::cin, buffer);
 	list[i].setNickname(buffer);
-	std::cout << "Insert Phone Number"<< std::endl;
-	std::cin >> buffer;
+	std::cout << "Insert Phone Number : ";
+	std::getline(std::cin, buffer);
 	list[i].setPhone(buffer);
-	std::cout << "Insert Dark Secret"<< std::endl;
-	std::cin >> buffer;
+	std::cout << "Insert Dark Secret : ";
+	std::getline(std::cin, buffer);
 	list[i].setDarksecret(buffer);
 	i++;
 	if (qtt <= 7)
 		qtt++;
 	if (i == 8)
 		i = 0;
+	return ;
 }
 
 void	Book::reduc_string(std::string s)
@@ -141,23 +142,12 @@ void	Book::list_book (void)
 	if (this->qtt > 0)
 	{
 		std::cout << "Chose the ID 0 to " << this->qtt - 1 << " > ";
-		std::cin >> chose;
+		//std::cin >> chose;
+		std::getline(std::cin, chose);
 		num = atoi(chose.c_str());
 		if (num >= 0 && num < (this->qtt) && this->qtt > 0)
 			list_person(num);
 	}
-
-
-	/*while ((num < 0 || num > (this->qtt)) && this->qtt > 0)
-	{
-		std::cout << "Chose the ID 0 to " << this->qtt;
-		std::cin >> chose;
-		num = atoi(chose.c_str());
-		if (chose.length() != 1)
-        	num = 9;
-	}*/
-
-
 	return ;
 }
 

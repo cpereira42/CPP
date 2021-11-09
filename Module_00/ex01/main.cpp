@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 00:26:18 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/13 19:55:55 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/11/08 21:09:23 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int	main (void)
 
 	book.creat();
 	command =  "";
+	
 	while (1)
 	{
-		std::cout << "Please choose the command ADD - SEARCH - EXIT > ";
-		std::cin >> command ;
+		
+
+		std::cout << "Please choose the command ADD - SEARCH - EXIT : ";
+		std::getline(std::cin, command);
 		if (command.compare("ADD") == 0)
 			book.add();
 		if (command.compare("SEARCH") == 0)

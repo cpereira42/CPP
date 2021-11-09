@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClassContact.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:01:18 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/13 19:52:02 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/11/08 19:28:45 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
