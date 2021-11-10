@@ -6,7 +6,7 @@
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 21:28:20 by cpereira          #+#    #+#             */
-/*   Updated: 2021/11/08 23:06:42 by cpereira         ###   ########.fr       */
+/*   Updated: 2021/11/09 21:11:18 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,25 @@ static bool try_open(std::string file_name)
 	return (false);
 }
 
+void	replace(std::string old_str, std::string new_str, std::string *text)
+{
+	std::size_t 	found;
+	found = (*text).find(old_str);
+	while (found!=std::string::npos)
+	{
+		(*text).erase(found,old_str.size());
+		(*text).insert(found, new_str);
+		found = (*text).find(old_str);
+	}
+}
+
 int main (int argc, char **argv)
 {
 	std::string		file_name;
 	std::string		out_file_name;
-	std::ifstream	input_file;
-	std::ofstream	output_file;
-	std::string		str1;
-	std::string		str2;
+	std::string		text;
+	std::ifstream	file_in;
+	std::ofstream	file_out;
 
 	if (argc != 4)
 	{
@@ -58,16 +69,17 @@ int main (int argc, char **argv)
 	if (try_open(argv[1]))
 		return (1);
 		
-	file_name = std::string(argv[1]);
+	file_name = argv[1];
+	file_in.open(file_name.c_str());
 	out_file_name = to_upper(file_name) + ".replace";
-	output_file.open(out_file_name.c_str());
-	output_file.write("oi",2);
+	file_out.open(out_file_name.c_str());
 	
-	// falta copiar o arquivo e fazer o replace dele +/- 30 min
-	
-	input_file.close();
-	output_file.close();
-	
-	
-	
+	while (std::getline (file_in, text))
+	{
+		replace(argv[2],argv[3],&text);
+		file_out << text << std::endl;
+	}
+	file_in.close();
+	file_out.close();
 }
+
