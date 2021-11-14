@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   karen.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/07 17:46:12 by cpereira          #+#    #+#             */
-/*   Updated: 2021/11/13 23:33:21 by cpereira         ###   ########.fr       */
+/*   Created: 2021/11/13 23:30:08 by cpereira          #+#    #+#             */
+/*   Updated: 2021/11/13 23:30:09 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef KAREN_HPP
+# define KAREN_HPP
 
-#include <iostream>
-#include <string> // To use string
-#include <iomanip>
+# include <iostream>
 
-class Zombie
+class Karen
 {
-	public:
-		Zombie( void );
-		~Zombie( void );
-		
-		void			annouce(void);
-		std:: string	get_name(void);
-		void			set_name(std::string name);
+    public:
 
-		
-	private:
-		std::string	_name;
+    Karen(void);
+	~Karen(void);
+    void complain(std::string level);
+
+    private:
+
+    void    info(void);
+    void    debug(void);
+    void    warning(void);
+    void    error(void);
+    void    invalid(void);
 
 };
-
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
-
 #endif
