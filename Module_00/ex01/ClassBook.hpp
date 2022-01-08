@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Book.hpp                                           :+:      :+:    :+:   */
+/*   ClassBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+        */
+/*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:46:12 by cpereira          #+#    #+#             */
-/*   Updated: 2021/09/13 20:04:41 by cpereira         ###   ########.fr       */
+/*   Updated: 2022/01/08 03:06:54 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BOOK_HPP
-# define BOOK_HPP
+#ifndef CLASSBOOK_HPP
+# define CLASSBOOK_HPP
 
 #include <iostream>
 #include <string> // To use string

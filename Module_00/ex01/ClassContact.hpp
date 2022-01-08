@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   ClassContact.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 17:46:12 by cpereira          #+#    #+#             */
-/*   Updated: 2021/11/08 19:15:11 by cpereira         ###   ########.fr       */
+/*   Updated: 2022/01/08 03:07:38 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef CLASSCONTACT_HPP
+# define CLASSCONTACT_HPP
 
 #include <iostream>
 #include <string> // To use string

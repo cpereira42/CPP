@@ -6,25 +6,21 @@
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 00:26:18 by cpereira          #+#    #+#             */
-/*   Updated: 2021/11/08 21:09:23 by cpereira         ###   ########.fr       */
+/*   Updated: 2022/01/08 17:03:26 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "Book.hpp"
+#include "ClassContact.hpp"
+#include "ClassBook.hpp"
 
 int	main (void)
 {
 	std::string command;
 	Book book;
 
-	book.creat();
 	command =  "";
-	
 	while (1)
 	{
-		
-
 		std::cout << "Please choose the command ADD - SEARCH - EXIT : ";
 		std::getline(std::cin, command);
 		if (command.compare("ADD") == 0)

@@ -6,11 +6,11 @@
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 19:01:18 by cpereira          #+#    #+#             */
-/*   Updated: 2021/11/08 19:28:45 by cpereira         ###   ########.fr       */
+/*   Updated: 2022/01/08 16:54:54 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "ClassContact.hpp"
 
 //*******************SETTERS*******************************//
 

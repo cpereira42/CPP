@@ -6,12 +6,12 @@
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 22:56:05 by cpereira          #+#    #+#             */
-/*   Updated: 2021/11/08 21:09:40 by cpereira         ###   ########.fr       */
+/*   Updated: 2022/01/08 17:17:34 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
-#include "Book.hpp"
+#include "ClassContact.hpp"
+#include "ClassBook.hpp"
 
 Book::Book(void)
 {
@@ -23,64 +23,9 @@ Book::~Book(void)
 {
 }
 
-void Book::creat(void)
-{
-	/*list[0].setFirstName("Cezar");
-	list[0].setLastName("Pereira");
-	list[0].setNickname("cpereira");
-	list[0].setPhone("11-9.8563-6187");
-	list[0].setDarksecret("VSCODE");*/
-
-	/*list[1].setFirstName("Angelica");
-	list[1].setLastName("Miranda");
-	list[1].setNickname("anolivei");
-	list[1].setPhone("11-9.6762-9421");
-	list[1].setDarksecret("VSCODE2");
-
-	list[2].setFirstName("AMUM");
-	list[2].setLastName("MEOW");
-	list[2].setNickname("ARYA");
-	list[2].setPhone("11-9.2222-2222");
-	list[2].setDarksecret("PETS");
-
-	list[3].setFirstName("Paulo");
-	list[3].setLastName("Cunha");
-	list[3].setNickname("pcunha");
-	list[3].setPhone("11-9.3333-3333");
-	list[3].setDarksecret("VIM");
-
-	list[4].setFirstName("JACQUE");
-	list[4].setLastName("Rodrigues");
-	list[4].setNickname("jakrodri");
-	list[4].setPhone("11-9.4444-4444");
-	list[4].setDarksecret("LUTA");
-
-	list[5].setFirstName("ADRIAN");
-	list[5].setLastName("ROQUE");
-	list[5].setNickname("ADROQUE");
-	list[5].setPhone("11-9.5555-5555");
-	list[5].setDarksecret("DEVOPS");
-
-	list[6].setFirstName("NAYRAN");
-	list[6].setLastName("SIMON");
-	list[6].setNickname("NASIMON");
-	list[6].setPhone("11-9.6666-6666");
-	list[6].setDarksecret("DEVOPS");
-
-	list[7].setFirstName("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-	list[7].setLastName("PEREIRA");
-	list[7].setNickname("IPEREIRA");
-	list[7].setPhone("11-9.7777-7777");
-	list[7].setDarksecret("CANIL");*/
-
-	i = 0;
-}
-
-
 void	Book::add(void)
 {
 	std::string buffer;
-
 	std::cout << "Insert First Name : ";
 	std::getline(std::cin, buffer);
 	list[i].setFirstName(buffer);
@@ -122,17 +67,15 @@ void	Book::list_book (void)
 	std::string	buffer;
 
 	i = 0;
-	std::cout << "-----------------------------------------------------------------"<< std::endl;
-	std::cout << "   id     |First Name|Last Name | NickName |  Phone   |DarkSecret|"<< std::endl;
-	std::cout << "-----------------------------------------------------------------"<< std::endl;
+	std::cout << "-------------------------------------------"<< std::endl;
+	std::cout << "   id     |First Name|Last Name | NickName |"<< std::endl;
+	std::cout << "-------------------------------------------"<< std::endl;
 	while (i < 8 && list[i].get_FirstName() != "")
 	{
-		std::cout << std::setw(10) << i << "|";
+		std::cout << std::setw(10) << i + 1 << "|";
 		reduc_string(list[i].get_FirstName());
 		reduc_string(list[i].get_LastName());
 		reduc_string(list[i].get_Nickname());
-		reduc_string(list[i].get_Phone());
-		reduc_string(list[i].get_Darkestsecret());
 		std::cout << std::endl;
 		i++;
 	}
@@ -141,12 +84,14 @@ void	Book::list_book (void)
 
 	if (this->qtt > 0)
 	{
-		std::cout << "Chose the ID 0 to " << this->qtt - 1 << " > ";
+		std::cout << "Chose the ID 1 to " << this->qtt << " > ";
 		//std::cin >> chose;
 		std::getline(std::cin, chose);
 		num = atoi(chose.c_str());
-		if (num >= 0 && num < (this->qtt) && this->qtt > 0)
-			list_person(num);
+		if (num >= 1 && num <= (this->qtt) && this->qtt > 0)
+			list_person(num - 1);
+		else
+			std::cout << "Invalid choice ";
 	}
 	return ;
 }
@@ -154,7 +99,7 @@ void	Book::list_book (void)
 void	Book::list_person(int i)
 {
 	std::cout << "--------------------INFORMATIONS-------------------------------"<< std::endl;
-	std::cout << "ID = " << i << std::endl ;
+	std::cout << "ID = " << i + 1 << std::endl ;
 	std::cout << "First Name = " << list[i].get_FirstName() << std::endl;
 	std::cout << "Last Name = " << list[i].get_LastName() << std::endl;
 	std::cout << "Nickname = " << list[i].get_Nickname() << std::endl;
