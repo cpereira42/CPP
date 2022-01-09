@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cpereira <cpereira@student.42sp.org>       +#+  +:+       +#+         #
+#    By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 00:08:05 by cpereira          #+#    #+#              #
-#    Updated: 2021/09/13 22:04:56 by cpereira         ###   ########.fr        #
+#    Updated: 2022/01/08 21:49:41 by cpereira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Account
+NAME = account
 
 ODIR =	./objs/
 
@@ -30,7 +30,6 @@ $(NAME): $(OBJS)
 $(ODIR)%.o: $(SDIR)%.c
 		@mkdir -p $(ODIR)
 		@$(CC) $(C_FLAGS) -c $< -o $@
-
 
 all: account
 

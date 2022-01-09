@@ -6,7 +6,7 @@
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 22:56:05 by cpereira          #+#    #+#             */
-/*   Updated: 2022/01/08 17:17:34 by cpereira         ###   ########.fr       */
+/*   Updated: 2022/01/08 21:47:53 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	Book::list_book (void)
 	if (this->qtt > 0)
 	{
 		std::cout << "Chose the ID 1 to " << this->qtt << " > ";
-		//std::cin >> chose;
 		std::getline(std::cin, chose);
 		num = atoi(chose.c_str());
 		if (num >= 1 && num <= (this->qtt) && this->qtt > 0)
