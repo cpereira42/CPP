@@ -6,7 +6,7 @@
 /*   By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 22:48:05 by cpereira          #+#    #+#             */
-/*   Updated: 2022/01/24 02:09:28 by cpereira         ###   ########.fr       */
+/*   Updated: 2022/01/24 22:04:49 by cpereira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 ClapTrap::ClapTrap( void )
 {
     std::cout << "Default constructor called" << std::endl;
+    this->_name = "Anonimous";
+    this->_energypoint = 10;
+    this->_hitpoint = 10;
+    this->_attackdamage = 0;
     return ;
 }
 
@@ -27,6 +31,23 @@ ClapTrap::ClapTrap(std:: string name)
     this->_energypoint = 10;
     this->_hitpoint = 10;
     this->_attackdamage = 0;
+    return ;
+}
+
+ClapTrap::ClapTrap(ClapTrap const &src)
+{
+    ClapTrap::operator = (src);
+    return ;
+}
+
+ClapTrap &ClapTrap::operator=(ClapTrap const &rhs) {
+    // fazer copia aqui
+    this->_hitpoint = rhs._hitpoint;
+    this->_attackdamage = rhs._attackdamage;
+    this->_energypoint = rhs._energypoint;
+    this->_name = rhs._name;
+    
+    return *this;
 }
 
 ClapTrap::~ClapTrap(void)
