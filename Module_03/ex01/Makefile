@@ -6,16 +6,17 @@
 #    By: cpereira <cpereira@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/27 00:08:05 by cpereira          #+#    #+#              #
-#    Updated: 2022/01/27 18:31:22 by cpereira         ###   ########.fr        #
+#    Updated: 2022/01/27 18:31:30 by cpereira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ClapTrap.out
+NAME = ScavTrap.out
 
 ODIR =	./objs/
 
 SRCS =	src/main.cpp \
-		src/ClapTrap.cpp 
+		src/ClapTrap.cpp \
+		src/ScavTrap.cpp
 
 OBJS =	$(patsubst %.c, $(ODIR)%.o, $(SRCS))
 
