@@ -10,14 +10,14 @@
 #include <stdlib.h>
 #include <sstream>
 
-class Btc {
+class BitcoinExchange {
     public:
-        Btc (void);
-        Btc (std::string fileName);
-        Btc (const Btc &obj);
-        ~Btc (void);
+        BitcoinExchange (void);
+        BitcoinExchange (std::string fileName);
+        BitcoinExchange (const BitcoinExchange &obj);
+        ~BitcoinExchange (void);
 
-        Btc& operator=(const Btc& obj);
+        BitcoinExchange& operator=(const BitcoinExchange& obj);
 
         void loadData(char splitter);
         bool checkValidDate(std::string dataStr);

@@ -8,10 +8,10 @@ int main(int argc, char*argv[]) {
 
     try
     {
-        Btc btc("data.csv");
-        btc.loadData(',');
-        btc.checkInput(argv[1]);
-        btc.process('|');
+        BitcoinExchange BitcoinExchange("data.csv");
+        BitcoinExchange.loadData(',');
+        BitcoinExchange.checkInput(argv[1]);
+        BitcoinExchange.process('|');
     }
     catch(const std::exception& e)
     {

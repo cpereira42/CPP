@@ -1,24 +1,36 @@
 #include "BitcoinExchange.hpp"
 
-Btc::Btc(void) { return ;}
-Btc::Btc(std::string nameFile) : _nameFile(nameFile) {return ;}
-/*Btc::Btc(const Btc& obj) { 
+BitcoinExchange::BitcoinExchange(void) { return ;}
+BitcoinExchange::BitcoinExchange(std::string nameFile) : _nameFile(nameFile) {return ;}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) { 
     *this = obj;
     return ;
-}*/
-Btc::~Btc(void) {return ;}
+}
+BitcoinExchange::~BitcoinExchange(void) {return ;}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj)
+{
+    if (this != &obj)
+    {
+        this->_data = obj._data;
+        this->_mymap = obj._mymap;
+        this->_nameFile = obj._nameFile;
+        this->_myfile = obj._myfile;
+    }
+    return (*this);
+}
 
 
-void Btc::checkInput(std::string nameFile){
+void BitcoinExchange::checkInput(std::string nameFile){
     std::ifstream myfile (nameFile);
     if (myfile.is_open())
         _myfile = std::string((std::istreambuf_iterator<char>(myfile)), std::istreambuf_iterator<char>());
     else
-        throw Btc::InvalidFile();;
+        throw BitcoinExchange::InvalidFile();;
     myfile.close();
 }
 
-void Btc::loadData(char splitter){
+void BitcoinExchange::loadData(char splitter){
     
     std::ifstream myfile (_nameFile); 
     std::string key;
@@ -36,7 +48,7 @@ void Btc::loadData(char splitter){
     myfile.close();
 }
 
-bool Btc::checkValidDate(std::string dataStr){
+bool BitcoinExchange::checkValidDate(std::string dataStr){
 
     int year ;
     int month ;
@@ -51,7 +63,7 @@ bool Btc::checkValidDate(std::string dataStr){
     return true;
 }
 
-std::string Btc::reduceDate(std::string dataStr){
+std::string BitcoinExchange::reduceDate(std::string dataStr){
     int year ;
     int month ;
     int day ;
@@ -73,7 +85,7 @@ std::string Btc::reduceDate(std::string dataStr){
     return ss.str();
 }
 
-bool Btc::checkExist(std::string date){
+bool BitcoinExchange::checkExist(std::string date){
     std::map<std::string,double>::iterator it = this->_data.begin();
     it = this->_data.find(date);
     if (it == this->_data.end()){
@@ -82,7 +94,7 @@ bool Btc::checkExist(std::string date){
     return true;
 }
 
-void Btc::process(char splitter){
+void BitcoinExchange::process(char splitter){
     std::string key;
     std::string value;
     std::string line;
@@ -137,7 +149,7 @@ void Btc::process(char splitter){
     }
 }
 
-bool Btc::is_numeric(const std::string& s) {
+bool BitcoinExchange::is_numeric(const std::string& s) {
     bool decimal_point_found = false;
     for (std::size_t i = 0; i < s.size(); ++i) {
         char c = s[i];
