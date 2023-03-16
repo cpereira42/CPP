@@ -2,14 +2,12 @@
 #define PMERGEME_HPP
 
 #include <vector>
-#include <deque>
 #include <list>
 #include <iostream>
-#include <fstream>
-
 #include <stdlib.h>
-#include <sstream>
 #include <chrono>
+#include <sys/time.h>
+#include <iomanip> //setprecision
 
 class PmergeMe {
     public:
@@ -24,6 +22,8 @@ class PmergeMe {
         bool isInteger(const std::string number);
         void loadData(int argc, char*argv[]);
         void printInfo(int argc, char*argv[]);
+        double getTime(void);
+        double deltaTime(long long time);
 
 
     private :

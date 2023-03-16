@@ -20,7 +20,8 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj)
 }
 
 void PmergeMe::bubbleSortVector(void) {
-    std::chrono::time_point<std::chrono::high_resolution_clock> inicio = std::chrono::high_resolution_clock::now();
+    
+    double start = getTime();
     int n = _myVector.size();
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
@@ -29,13 +30,13 @@ void PmergeMe::bubbleSortVector(void) {
             }
         }
     }
-    std::chrono::time_point<std::chrono::high_resolution_clock> fim = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::micro> duracao = fim - inicio;
-    _timer1 = duracao.count();
+
+    _timer1 = deltaTime(start);
 }
 
 void PmergeMe::bubbleSort(void) {
-    std::chrono::time_point<std::chrono::high_resolution_clock> inicio = std::chrono::high_resolution_clock::now();
+    
+    double start = getTime();
     int n = _myList.size();
     std::list<int>::iterator it_i = _myList.begin();
     std::list<int>::iterator it_j = std::next(it_i);
@@ -51,9 +52,7 @@ void PmergeMe::bubbleSort(void) {
         it_i = _myList.begin();
         it_j = std::next(it_i);
     }
-    std::chrono::time_point<std::chrono::high_resolution_clock> fim = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::micro> duracao = fim - inicio;
-    _timer2 = duracao.count();
+    _timer2 = deltaTime(start);
 }
 
 bool PmergeMe::isInteger(const std::string number){
@@ -77,6 +76,22 @@ void PmergeMe::loadData(int argc, char*argv[]){
             throw PmergeMe::NotIsANumber();
 }
 
+double    PmergeMe::getTime(void)
+{
+    struct timeval    time;
+
+    gettimeofday(&time, NULL);
+    return ((time.tv_sec * 1000) + (time.tv_usec * 0.001));
+}
+
+double    PmergeMe::deltaTime(long long time)
+{
+    if (time > 0)
+        return (getTime() - time);
+    return (0);
+}
+
+
 void PmergeMe::printInfo(int argc, char*argv[]){
     std::cout << "Before : " ;
     for (int i = 1; i < argc; i++)
@@ -85,8 +100,8 @@ void PmergeMe::printInfo(int argc, char*argv[]){
     for (std::vector<int>::iterator it = _myVector.begin(); it != _myVector.end(); it++) {
        std::cout << *it << " ";
     }
-    std::cout << std::endl << "Time to process a range of " << _myVector.size() << " elements with std::vector : " << _timer1 << " us" << std::endl;
-    std::cout << "Time to process a range of " << _myList.size() <<" elements with std::list   : " << _timer2 << " us" << std::endl;
+    std::cout << std::endl << "Time to process a range of " <<  _myVector.size() << " elements with std::vector : "  << std::fixed << std::setprecision(5) << _timer1 << " us" << std::endl;
+    std::cout << "Time to process a range of " << _myList.size() <<" elements with std::list   : "  << std::fixed << std::setprecision(5) << _timer2 << " us" << std::endl;
 
 }
 
