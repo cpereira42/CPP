@@ -57,7 +57,7 @@ void PmergeMe::bubbleSort(void) {
 
 bool PmergeMe::isInteger(const std::string number){
     try {
-        std::stoi(number);
+        atoi(number.c_str());
         return true;
     } catch (const std::invalid_argument& e) {
         return false;
