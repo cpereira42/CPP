@@ -4,6 +4,7 @@
 #include <stack>
 #include <iostream>
 #include <cstring>
+#include <algorithm> 
 
 class RPN {
     public:

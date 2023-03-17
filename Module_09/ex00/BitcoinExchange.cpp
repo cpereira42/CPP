@@ -20,7 +20,6 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj)
     return (*this);
 }
 
-
 void BitcoinExchange::checkInput(std::string nameFile){
     std::ifstream myfile (nameFile);
     if (myfile.is_open())
@@ -157,13 +156,19 @@ bool BitcoinExchange::is_numeric(const std::string& s) {
             continue;
         if (c == '.') {
             if (decimal_point_found) {
-                return false; // mais de um ponto decimal encontrado
+                return false; 
             } else {
                 decimal_point_found = true;
             }
         } else if (!std::isdigit(c)) {
-            return false; // caractere não numérico encontrado
+            return false;
         }
     }
     return true;
+}
+
+std::ostream&    operator<<(std::ostream& o, const BitcoinExchange& i)
+{
+    o << "something";
+    return o;
 }

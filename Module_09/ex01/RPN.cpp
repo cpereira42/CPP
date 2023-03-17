@@ -35,7 +35,7 @@ void RPN::calc(void){
         if (_signal.top() == '/'){
             if(_numbers.top() == 0)
                 throw RPN::DivisionByZero();
-                _total /= _numbers.top();
+            _total /= _numbers.top();
         }
         _signal.pop();
         _numbers.pop();
