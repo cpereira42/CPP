@@ -26,7 +26,7 @@ void BitcoinExchange::checkInput(std::string nameFile){
     if (myfile.is_open())
         _myfile = std::string((std::istreambuf_iterator<char>(myfile)), std::istreambuf_iterator<char>());
     else
-        throw BitcoinExchange::InvalidFile();;
+        throw BitcoinExchange::InvalidFile();
     myfile.close();
 }
 

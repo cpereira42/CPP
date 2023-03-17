@@ -105,3 +105,10 @@ void PmergeMe::printInfo(int argc, char*argv[]){
 
 }
 
+std::ostream&    operator<<(std::ostream& o, const PmergeMe& i)
+{
+    o << i.printInfo();
+    return o;
+}
+
+

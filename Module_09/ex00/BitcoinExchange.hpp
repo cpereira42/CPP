@@ -42,8 +42,7 @@ class BitcoinExchange {
                 return ("Error: could not open file.");
             }
     };
-
 };
-
+    std::ostream&    operator<<(std::ostream& o, const BitcoinExchange& i);
 
 #endif

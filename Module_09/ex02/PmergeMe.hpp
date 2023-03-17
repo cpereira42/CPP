@@ -43,5 +43,5 @@ class PmergeMe {
 
 };
 
-
+std::ostream&    operator<<(std::ostream& o, const PmergeMe& i);
 #endif
