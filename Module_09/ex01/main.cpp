@@ -5,12 +5,12 @@ int main(int argc, char*argv[]) {
         std::cout << "Error: could not open file." << std::endl;
         return 1;
     }
+    
     try
     {
         std::string input = argv[1];
         RPN rpn;
         rpn.loadData(input);
-        rpn.calc();
         std::cout << rpn << std::endl;
 
     }

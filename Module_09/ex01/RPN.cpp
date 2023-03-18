@@ -11,61 +11,62 @@ RPN& RPN::operator=(const RPN& obj)
 {
     if (this != &obj)
     {
-        this->_signal = obj._signal;
+        this->_total = obj._total;
         this->_numbers = obj._numbers;
     }
     return (*this);
 }
 
-void RPN::calc(void){
-    
-    if (_numbers.size() <= 0)
-        throw RPN::CantBeCalculate();
+bool RPN::isSignal(char signal){
+    if(signal == '+' || signal== '-' || signal == '*' || signal == '/')
+        return true;
+    return false;
+}
 
-    _total = _numbers.top();
-    _numbers.pop();
+void RPN::calc(char signal){
 
-    while (_numbers.size() >= 1) {
-        if (_signal.top() == '+')
-            _total += _numbers.top();
-        if (_signal.top() == '-')
-            _total -= _numbers.top();
-        if (_signal.top() == '*')
-            _total *= _numbers.top();
-        if (_signal.top() == '/'){
-            if(_numbers.top() == 0)
-                throw RPN::DivisionByZero();
-            _total /= _numbers.top();
-        }
-        _signal.pop();
-        _numbers.pop();
+    int sum;
+
+    if (isSignal(signal))
+    {
+        if (_numbers.size() > 1)
+        {
+            sum = _numbers.top();
+            _numbers.pop();
+            if (signal == '+')
+                sum = _numbers.top() + sum;
+            if (signal == '-')
+                sum = _numbers.top() - sum;
+            if (signal == '*')
+                sum = _numbers.top() * sum;
+            if (signal == '/'){
+                if (_numbers.top() == 0 || sum == 0)
+                    throw RPN::DivisionByZero();
+                sum = _numbers.top() / sum;
+            }
+            _numbers.pop();
+            _numbers.push(sum);
+        } 
+        else 
+            throw RPN::InvalidInput();
     }
 }
 
 void RPN::loadData(std::string input) {
-    char last = 'n';
-
-    _numbers.empty();
-    _signal.empty();
 
     input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
-    for (int i = input.size() - 1; i >= 0; i--){
-        if(input[i] >= '0' && input[i] <= '9' && last == 's')
-        {
+    for (size_t i = 0 ; i <= input.length() -1 ; i++){
+        if(input[i] >= '0' && input[i] <= '9')
             _numbers.push(input[i] - 48);
-            if (i == 1)
-                last = 's';
-            else
-                last = 'n';
-        }
-        else if((input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/') && last == 'n')
-        {
-            _signal.push(input[i]);
-            last = 's';
-        }
+        else if(isSignal(input[i]))
+            calc(input[i]);
         else
             throw RPN::InvalidInput();
     }
+    if (_numbers.size() > 1)
+        throw RPN::InvalidInput();
+    _total = _numbers.top();
+
 }
 int RPN::getTotal(void) const{ return _total;}
 
