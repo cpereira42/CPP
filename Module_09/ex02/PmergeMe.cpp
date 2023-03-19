@@ -1,6 +1,12 @@
 #include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe(void) { return ;}
+PmergeMe::PmergeMe(int argc, char **argv) { 
+    loadData(argc, argv);
+    Sort();
+    printInfo(argc, argv);
+    return ;}
+
 PmergeMe::~PmergeMe(void) {return ;}
 PmergeMe::PmergeMe(const PmergeMe& obj) { 
     *this = obj;
@@ -11,49 +17,26 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj)
 {
     if (this != &obj)
     {
-        this->_myList = obj._myList;
-        this->_myList = obj._myList;
-        this->_timer1 = obj._timer1;
-        this->_timer2 = obj._timer2;
+        this->_myVector = obj._myVector;
+        this->_myDeque = obj._myDeque;
+        this->_timerVector = obj._timerVector;
+        this->_timerDeque = obj._timerDeque;
     }
     return (*this);
 }
 
-void PmergeMe::bubbleSortVector(void) {
-    
-    double start = getTime();
-    int n = _myVector.size();
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (_myVector[j] > _myVector[j + 1]) {
-                std::swap(_myVector[j], _myVector[j + 1]);
-            }
-        }
-    }
+void PmergeMe::Sort(void){
+    double start;
+    start = getTime();
+    merge_insert_sort(_myVector);
+    _timerVector = deltaTime(start);
 
-    _timer1 = deltaTime(start);
+    start = getTime();
+    merge_insert_sort(_myDeque);
+    _timerDeque = deltaTime(start);
 }
 
-void PmergeMe::bubbleSort(void) {
-    
-    double start = getTime();
-    int n = _myList.size();
-    std::list<int>::iterator it_i = _myList.begin();
-    std::list<int>::iterator it_j = std::next(it_i);
 
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (*it_j < *it_i) {
-                std::swap(*it_i, *it_j);
-            }
-            it_i++;
-            it_j++;
-        }
-        it_i = _myList.begin();
-        it_j = std::next(it_i);
-    }
-    _timer2 = deltaTime(start);
-}
 
 bool PmergeMe::isInteger(const std::string number){
     try {
@@ -67,10 +50,19 @@ bool PmergeMe::isInteger(const std::string number){
 }
 
 void PmergeMe::loadData(int argc, char*argv[]){
+    std::set<int> checker;
+    int number;
+    _size = argc;
+
+
     for (int i = 1; i < argc; i++)
         if (isInteger(argv[i])){
-            _myVector.push_back(atoi(argv[i]));
-            _myList.push_back(atoi(argv[i]));
+            number = atoi(argv[i]);
+            _myVector.push_back(number);
+            _myDeque.push_back(number);
+            if (checker.find(number) != checker.end())
+                throw Duplicated();
+            checker.insert(number);
         }
         else
             throw PmergeMe::NotIsANumber();
@@ -100,14 +92,60 @@ void PmergeMe::printInfo(int argc, char*argv[]){
     for (std::vector<int>::iterator it = _myVector.begin(); it != _myVector.end(); it++) {
        std::cout << *it << " ";
     }
-    std::cout << std::endl << "Time to process a range of " <<  _myVector.size() << " elements with std::vector : "  << std::fixed << std::setprecision(5) << _timer1 << " us" << std::endl;
-    std::cout << "Time to process a range of " << _myList.size() <<" elements with std::list   : "  << std::fixed << std::setprecision(5) << _timer2 << " us" << std::endl;
-
 }
+
+template<typename T>
+void PmergeMe::merge_insert_sort(T& container) {
+    if (container.size() <= 1) {
+        return;
+    }
+    int mid = container.size() / 2;
+    T left(container.begin(), container.begin() + mid);
+    T right(container.begin() + mid, container.end());
+    merge_insert_sort(left);
+    merge_insert_sort(right);
+    typename T::iterator i = left.begin();
+    typename T::iterator j = right.begin();
+    typename T::iterator k = container.begin();
+    while (i != left.end() && j != right.end()) {
+        if (*i < *j) {
+            *k = *i;
+            ++i;
+        } else {
+            *k = *j;
+            ++j;
+        }
+        ++k;
+    }
+    while (i != left.end()) {
+        *k = *i;
+        ++i;
+        ++k;
+    }
+    while (j != right.end()) {
+        *k = *j;
+        ++j;
+        ++k;
+    }
+}
+
+double PmergeMe::getVectorTimer() const {
+    return _timerVector;
+}
+
+double PmergeMe::getDequeTimer() const{
+    return _timerDeque;
+}
+
+int PmergeMe::getSize() const {
+    return _size;
+}
+
 
 std::ostream&    operator<<(std::ostream& o, const PmergeMe& i)
 {
-    o << i.printInfo();
+    o << std::endl <<  "Time to process a range of " <<  i.getSize() << " elements with std::vector : "  << std::fixed << std::setprecision(5) << i.getVectorTimer() << " us" << std::endl;
+    std::cout << "Time to process a range of " << i.getSize() <<" elements with std::deque   : "  << std::fixed << std::setprecision(5) << i.getDequeTimer() << " us";
     return o;
 }
 
