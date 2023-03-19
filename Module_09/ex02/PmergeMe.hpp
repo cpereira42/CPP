@@ -33,7 +33,7 @@ class PmergeMe {
 
     private :
        std::vector<int> _myVector;
-       std::deque<int>   _myDeque;
+       std::deque<int>  _myDeque;
        double           _timerVector;
        double           _timerDeque;
        int              _size;

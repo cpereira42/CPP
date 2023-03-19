@@ -39,14 +39,14 @@ void PmergeMe::Sort(void){
 
 
 bool PmergeMe::isInteger(const std::string number){
-    try {
-        atoi(number.c_str());
-        return true;
-    } catch (const std::invalid_argument& e) {
-        return false;
-    } catch (const std::out_of_range& e) {
-        return false;
+    
+    for (std::size_t i = 0; i < number.size(); ++i) {
+        char c = number[i];
+        if (!std::isdigit(c)) {
+            return false; 
+        }
     }
+    return true;
 }
 
 void PmergeMe::loadData(int argc, char*argv[]){

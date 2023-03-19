@@ -48,6 +48,18 @@ void BitcoinExchange::loadData(char splitter){
     myfile.close();
 }
 
+bool bisexto(int year){
+     if (year % 4 != 0) {
+        return false;
+    } else if (year % 100 != 0) {
+        return true;
+    } else if (year % 400 != 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 bool BitcoinExchange::checkValidDate(std::string dataStr){
 
     int year ;
@@ -60,6 +72,20 @@ bool BitcoinExchange::checkValidDate(std::string dataStr){
         std::cout << "Error: bad input => " << dataStr << std::endl;;
         return false;
     }
+    if (!bisexto(year) && day > 28 && month == 12){
+        std::cout << "Error: bad input => " << dataStr << std::endl;;
+        return false;
+    }
+  
+  
+    if (month != 1 && month != 3 && month != 5 && month != 7 && month != 8 && month != 10 && month != 12 && day == 31) {
+        std::cout << "Error: bad input => " << dataStr << std::endl;;
+        return false;
+    }
+
+
+
+
     return true;
 }
 
