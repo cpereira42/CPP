@@ -5,10 +5,13 @@
 #include <deque>
 #include <list>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <map>
 #include <stdlib.h>
 #include <sstream>
+#include <algorithm>
+#include <string>
 
 class BitcoinExchange {
     public:
@@ -27,7 +30,7 @@ class BitcoinExchange {
         void checkInput(std::string nameFile);
         void copyMyFile(const std::ifstream& myFile);
         bool is_numeric(const std::string& s);
-
+ 
 
     private :
         std::map<std::string,double> _mymap;

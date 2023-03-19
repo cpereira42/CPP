@@ -22,7 +22,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj)
 
 
 void BitcoinExchange::checkInput(std::string nameFile){
-    std::ifstream myfile (nameFile);
+    std::ifstream myfile (nameFile.c_str());
     if (myfile.is_open())
         _myfile = std::string((std::istreambuf_iterator<char>(myfile)), std::istreambuf_iterator<char>());
     else
@@ -32,7 +32,7 @@ void BitcoinExchange::checkInput(std::string nameFile){
 
 void BitcoinExchange::loadData(char splitter){
     
-    std::ifstream myfile (_nameFile); 
+    std::ifstream myfile (_nameFile.c_str()); 
     std::string key;
     std::string value;
     if (myfile.is_open())
@@ -42,7 +42,7 @@ void BitcoinExchange::loadData(char splitter){
         {
             getline(myfile, key, splitter);
             getline(myfile, value);
-            this->_data.insert(std::pair<std::string,double>(key,std::stod(value)));
+            this->_data.insert(std::pair<std::string,double>(key,std::atof(value.c_str())));
         }
     }
     myfile.close();
@@ -132,11 +132,11 @@ void BitcoinExchange::process(char splitter){
             continue;
         }
                            
-        if (std::stod(value) < 0){
+        if (atof(value.c_str()) < 0){
             std::cout << "Error: not a positive number." << std::endl;
             continue;
         }
-        if (std::stod(value) >  1000){
+        if (atof(value.c_str()) >  1000){
             std::cout << "Error: too large a number." << std::endl;
             continue;
         }
@@ -144,7 +144,7 @@ void BitcoinExchange::process(char splitter){
         while (!checkExist(date))
             date = reduceDate(date);
 
-        price = this->_data.find(date)->second * std::stod(value) ;
+        price = this->_data.find(date)->second * atof(value.c_str()) ;
         std::cout <<  key << " => " << value << " = " << price << '\n';
     }
 }
@@ -157,19 +157,19 @@ bool BitcoinExchange::is_numeric(const std::string& s) {
             continue;
         if (c == '.') {
             if (decimal_point_found) {
-                return false; // mais de um ponto decimal encontrado
+                return false; 
             } else {
                 decimal_point_found = true;
             }
         } else if (!std::isdigit(c)) {
-            return false; // caractere não numérico encontrado
+            return false; 
         }
     }
     return true;
 }
 
-std::ostream&    operator<<(std::ostream& o, const BitcoinExchange& i)
+/*std::ostream&    operator<<(std::ostream& o, const BitcoinExchange& i)
 {
-    o << i.getTotal();
+    o << ;
     return o;
-}
+}*/
