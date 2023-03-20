@@ -96,9 +96,27 @@ void PmergeMe::printInfo(int argc, char*argv[]){
 
 template<typename T>
 void PmergeMe::merge_insert_sort(T& container) {
-    if (container.size() <= 1) {
+
+	const int threshold = 16;
+	int size = container.size();
+
+    if (size <= 1) {
         return;
     }
+	if (size < threshold){
+		for (typename T::iterator i = container.begin(); i != container.end(); ++i)
+		{
+			typename T::iterator j = i;
+			while (j != container.begin() && *(j - 1) > *j)
+			{
+				std::swap(*j, *(j - 1));
+				--j;
+			}
+		}
+		return ;
+	}
+
+
     int mid = container.size() / 2;
     T left(container.begin(), container.begin() + mid);
     T right(container.begin() + mid, container.end());
@@ -144,8 +162,8 @@ int PmergeMe::getSize() const {
 
 std::ostream&    operator<<(std::ostream& o, const PmergeMe& i)
 {
-    o << std::endl <<  "Time to process a range of " <<  i.getSize() << " elements with std::vector : "  << std::fixed << std::setprecision(5) << i.getVectorTimer() << " us" << std::endl;
-    std::cout << "Time to process a range of " << i.getSize() <<" elements with std::deque   : "  << std::fixed << std::setprecision(5) << i.getDequeTimer() << " us";
+    o << std::endl <<  "Time to process a range of " <<  i.getSize() << " elements with std::vector : "  << std::fixed << std::setprecision(5) << i.getVectorTimer() << " ms" << std::endl;
+    std::cout << "Time to process a range of " << i.getSize() <<" elements with std::deque   : "  << std::fixed << std::setprecision(5) << i.getDequeTimer() << " ms";
     return o;
 }
 

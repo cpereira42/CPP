@@ -82,10 +82,6 @@ bool BitcoinExchange::checkValidDate(std::string dataStr){
         std::cout << "Error: bad input => " << dataStr << std::endl;;
         return false;
     }
-
-
-
-
     return true;
 }
 
@@ -167,9 +163,12 @@ void BitcoinExchange::process(char splitter){
             continue;
         }
             
-        while (!checkExist(date))
-            date = reduceDate(date);
-
+        while (!checkExist(date)){
+			date = reduceDate(date);
+			if (!checkValidDate(date)){
+			    return;
+			}
+		}
         price = this->_data.find(date)->second * atof(value.c_str()) ;
         std::cout <<  key << " => " << value << " = " << price << '\n';
     }
@@ -194,8 +193,9 @@ bool BitcoinExchange::is_numeric(const std::string& s) {
     return true;
 }
 
-/*std::ostream&    operator<<(std::ostream& o, const BitcoinExchange& i)
+std::ostream&    operator<<(std::ostream& o, const BitcoinExchange& i)
 {
-    o << ;
+    (void)i;
+	o << "";
     return o;
-}*/
+}
