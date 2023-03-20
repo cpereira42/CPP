@@ -2,16 +2,12 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <vector>
-#include <deque>
-#include <list>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include <map>
-#include <stdlib.h>
 #include <sstream>
 #include <algorithm>
-#include <string>
 
 class BitcoinExchange {
     public:
